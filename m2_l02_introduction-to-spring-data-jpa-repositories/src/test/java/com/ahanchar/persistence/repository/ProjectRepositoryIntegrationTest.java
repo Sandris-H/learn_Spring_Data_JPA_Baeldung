@@ -1,0 +1,24 @@
+package com.ahanchar.persistence.repository;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ahanchar.persistence.model.Project;
+
+@SpringBootTest
+class ProjectRepositoryIntegrationTest {
+
+    @Autowired
+    ProjectRepository projectRepository;
+
+    @Test
+    void givenLoadedProjects_whenFindByID_thenSuccess() {
+        Optional<Project> savedProject = projectRepository.findById(1L);
+        assertNotNull(savedProject.get());
+    }
+}
